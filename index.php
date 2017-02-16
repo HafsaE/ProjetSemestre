@@ -16,7 +16,7 @@ if (isset($_SESSION['username'])) {
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>GS</title>
 
     <!-- Stylesheets -->
 
@@ -55,21 +55,7 @@ if (isset($_SESSION['username'])) {
 
     <div class="page-full-width cf">
 
-        <div id="login-intro" class="fl">
-
-            <h1>Login to Dashboard</h1>
-            <h5>Enter your credentials below</h5>
-
-        </div>
-        <!-- login-intro -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 39px height. -->
-        <a href="#" id="company-branding" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+       
 
     </div>
     <!-- end full-width -->
@@ -84,7 +70,7 @@ if (isset($_SESSION['username'])) {
     <form action="checklogin.php" method="POST" id="login-form" class="cmxform" autocomplete="off">
 
         <fieldset>
-            <p> <?php
+            <p> <!--<?php
 
                 if (isset($_REQUEST['msg']) && isset($_REQUEST['type'])) {
 
@@ -101,31 +87,29 @@ if (isset($_SESSION['username'])) {
                 }
                 ?>
 
-            </p>
+            </p>-->
 
             <p>
-                <label for="login-username">username</label>
+                <label for="login-username">Login</label>
                 <input type="text" id="login-username" class="round full-width-input" placeholder="admin"
                        name="username" autofocus/>
             </p>
 
             <p>
-                <label for="login-password">password</label>
+                <label for="login-password">Mot de passe</label>
                 <input type="password" id="login-password" name="password" placeholder="admin"
                        class="round full-width-input"/>
             </p>
 
-            <a href="forget_pass.php" class="button ">Forgot your password?</a>
+            <a href="forget_pass.php" class="button ">Mot de passe oublie ?</a>
 
             <!--<a href="dashboard.php" class="button round blue image-right ic-right-arrow">LOG IN</a>-->
-            <input type="submit" class="button round blue image-right ic-right-arrow" name="submit" value="LOG IN"/>
+            <input type="submit" class="button round blue image-right ic-right-arrow" name="submit" value="Se Connecter"/>
         </fieldset>
 
         <br/>
 
-        <div class="information-box round">Just click on the "LOG IN" button to continue, no login information
-            required.
-        </div>
+        
 
     </form>
 

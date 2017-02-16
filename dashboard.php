@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Dashboard</title>
+    <title>GS -  Acceuil</title>
 
     <!-- Stylesheets -->
 
@@ -33,19 +33,19 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="active-tab dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class=" stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            <li><a href="dashboard.php" class="active-tab dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
         <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
+        <!-- The logo will automatically be resized to 30px height.
         <?php $line = $db->queryUniqueObject("SELECT * FROM store_details ");
         $_SESSION['logo'] = $line->log;
         ?>
@@ -69,13 +69,13 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Quick Links</h3>
+            <h3>Liens Rapides </h3>
             <ul>
-                <li><a href="add_sales.php">Add Sales</a></li>
-                <li><a href="add_purchase.php">Add Purchase</a></li>
-                <li><a href="add_supplier.php">Add Supplier</a></li>
-                <li><a href="add_customer.php">Add Customer</a></li>
-                <li><a href="view_report.php">Report</a></li>
+                <li><a href="add_sales.php">Ajouter Vente</a></li>
+                <li><a href="add_purchase.php">Ajouter Achat</a></li>
+                <li><a href="add_supplier.php">Ajouter Fournisseur</a></li>
+                <li><a href="add_customer.php">Ajouter Client</a></li>
+                <li><a href="view_report.php">Rapport</a></li>
             </ul>
 
         </div>
@@ -87,9 +87,9 @@ include_once("init.php");
 
                 <div class="content-module-heading cf">
 
-                    <h3 class="fl">Statistics</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
+                    <h3 class="fl">Statistiques</h3>
+                    <span class="fr expand-collapse-text">Retrecir</span>
+                    <span class="fr expand-collapse-text initial-expand">Elargir</span>
 
                 </div>
                 <!-- end content-module-heading -->
@@ -103,7 +103,7 @@ include_once("init.php");
                             <td width="150" align="left">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td align="left">Total Number of Products</td>
+                            <td align="left">Nombre Total de produits</td>
                             <td align="left"><?php echo $count = $db->countOfAll("stock_avail"); ?>&nbsp;</td>
                         </tr>
                         <tr>
@@ -111,7 +111,7 @@ include_once("init.php");
                             <td align="left">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td align="left">Total Sales Transactions</td>
+                            <td align="left">Nombre total de transactions</td>
                             <td align="left"><?php echo $count = $db->countOfAll("stock_sales"); ?></td>
                         </tr>
                         <tr>
@@ -119,7 +119,7 @@ include_once("init.php");
                             <td align="left">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td align="left">Total number of Suppliers</td>
+                            <td align="left">Nombre total de fournissseurs</td>
                             <td align="left"><?php echo $count = $db->countOfAll("supplier_details"); ?></td>
                         </tr>
                         <tr>
@@ -127,7 +127,7 @@ include_once("init.php");
                             <td align="left">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td align="left">Total Number of Customers</td>
+                            <td align="left">Nombre total de clients</td>
                             <td align="left"><?php echo $count = $db->countOfAll("customer_details"); ?></td>
                         </tr>
                         <tr>
@@ -139,7 +139,7 @@ include_once("init.php");
                             <td align="left">&nbsp;</td>
                         </tr>
                     </table>
-
+<!--
                     <table style="width:600px; margin-left:50px; float:left;" border="0" cellspacing="0"
                            cellpadding="0">
                         <tr>
@@ -180,7 +180,7 @@ include_once("init.php");
 
                         </tr>
 
-                    </table>
+                    </table>-->
                     <!--<ul class="temporary-button-showcase">
                         <li><a href="#" class="button round blue image-right ic-add text-upper">Add</a></li>
                         <li><a href="#" class="button round blue image-right ic-edit text-upper">Edit</a></li>
@@ -210,35 +210,7 @@ include_once("init.php");
 
 <!-- FOOTER -->
 <div id="footer">
-    <div id="fb-root"></div>
-
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=286371564842269";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <div id="fb-root"></div>
-    <div class="fb-like" data-href="https://www.facebook.com/posnic.point.of.sale" data-width="450"
-         data-show-faces="true" data-send="true"></div>
-    <div class="g-plusone" data-href="https://plus.google.com/u/0/107268519615804538483"></div>
-    <script type="text/javascript">
-        (function () {
-            var po = document.createElement('script');
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-    </script>
-
-
-    <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-    </p>
+   
 
 </div>
 <!-- end footer -->
