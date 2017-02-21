@@ -39,23 +39,12 @@ include_once("init.php");
             <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
             <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
             <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments </a></li>
             <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height.
-        <?php $line = $db->queryUniqueObject("SELECT * FROM store_details ");
-        $_SESSION['logo'] = $line->log;
-        ?>
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
-    </div>
+       </div>
     <!-- end full-width -->
 
 </div>
@@ -69,7 +58,7 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Liens Rapides </h3>
+           
             <ul>
                 <li><a href="add_sales.php">Ajouter Vente</a></li>
                 <li><a href="add_purchase.php">Ajouter Achat</a></li>
@@ -85,15 +74,7 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Statistiques</h3>
-                    <span class="fr expand-collapse-text">Retrecir</span>
-                    <span class="fr expand-collapse-text initial-expand">Elargir</span>
-
-                </div>
-                <!-- end content-module-heading -->
-
+                
                 <div class="content-module-main cf">
 
 
@@ -103,7 +84,7 @@ include_once("init.php");
                             <td width="150" align="left">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td align="left">Nombre Total de produits</td>
+                            <td align="left">Nombre Total de stocks</td>
                             <td align="left"><?php echo $count = $db->countOfAll("stock_avail"); ?>&nbsp;</td>
                         </tr>
                         <tr>

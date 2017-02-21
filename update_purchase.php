@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Update Supplier</title>
+    <title>GS</title>
 
     <!-- Stylesheets -->
 
@@ -39,24 +39,17 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="active-tab purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            <li><a href="dashboard.php" class=" dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="active-tab purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments </a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
 
     </div>
     <!-- end full-width -->
@@ -72,10 +65,10 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Purchase Management</h3>
+            
             <ul>
-                <li><a href="add_purchase.php">Add Purchase</a></li>
-                <li><a href="view_purchase.php">View Purchase </a></li>
+                <li><a href="add_purchase.php">Ajouter Achat</a></li>
+                <li><a href="view_purchase.php">Afficher Achats</a></li>
             </ul>
 
         </div>
@@ -85,13 +78,7 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Update Purchase</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                </div>
+                
                 <!-- end content-module-heading -->
 
                 <div class="content-module-main cf">
@@ -185,7 +172,7 @@ include_once("init.php");
                                 $array = explode(' ', $str);                           
                                 $autoid = ++$array[0];
                                   ?>
-                                <td>Purchase ID:</td>
+                                <td>ID Achat:</td>
                                 <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $line->stock_id; ?>"/></td>
@@ -198,12 +185,12 @@ include_once("init.php");
 
                             </tr>
                             <tr>
-                                <td><span class="man">*</span>Supplier:</td>
+                                <td><span class="man">*</span>Fournisseur:</td>
                                 <td><input name="supplier" placeholder="ENTER SUPPLIER" type="text" id="supplier"
                                            value="<?php echo $line->stock_supplier_name; ?> " maxlength="200"
                                            class="round default-width-input" style="width:130px "/></td>
 
-                                <td>Address:</td>
+                                <td>Addresse:</td>
                                 <td><input name="address" placeholder="ENTER ADDRESS" type="text"
                                            value="<?php $quantity = $db->queryUniqueValue("SELECT supplier_address FROM supplier_details WHERE supplier_name='" . $line->stock_supplier_name . "'");
                                            echo $quantity; ?>" id="address" maxlength="200"
@@ -222,12 +209,12 @@ include_once("init.php");
                         <input type="hidden" id="edit_guid">
                         <table id="hideen_display">
                             <tr>
-                                <td style="width: 174px">Item</td>
+                                <td style="width: 174px">Produit</td>
                                 
-                                <td style="width: 20px">Quantity</td>
-                                <td style="width: 87px">Cost</td>
-                                <td style="width: 87px">Selling</td>
-                                <td style="width: 97px">Available Stock</td>
+                                <td style="width: 20px">Quantité</td>
+                                <td style="width: 87px">Prix</td>
+                                <td style="width: 87px">Prix de vente</td>
+                                <td style="width: 97px">Disponibilité</td>
                                 <td style="width: 160x float: Left;">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								
                                
@@ -337,12 +324,12 @@ include_once("init.php");
                         </div> 
                         <table>
                             <tr>
-                                <td>Mode &nbsp;</td>
+                                <td>Mode de paiement &nbsp;</td>
                                 <td>
                                     <select name="mode">
                                         <option value="cheque">Cheque</option>
                                         <option value="cheque">Cash</option>
-                                        <option value="cheque">Other</option>
+                                        <option value="cheque">Autre</option>
                                     </select>
                                 </td>
                                 <td>Description</td>
@@ -360,11 +347,11 @@ include_once("init.php");
                             <tr>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
+                                           name="Submit" value="Enregistrer">
                                 </td>
                                 <td> (Control + S)
                                     <input class="button round red   text-upper" type="reset" name="Reset"
-                                           value="Reset"></td>
+                                           value="Réinitialiser"></td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                             </tr>
@@ -389,9 +376,7 @@ include_once("init.php");
 
     <!-- FOOTER -->
     <div id="footer">
-        <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-        </p>
-
+      
     </div>
     <!-- end footer -->
 

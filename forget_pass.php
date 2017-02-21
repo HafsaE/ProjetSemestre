@@ -17,7 +17,7 @@ $gump = new GUMP();
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Store Logo</title>
+    <title>GS</title>
 
     <!-- Stylesheets -->
 
@@ -45,7 +45,7 @@ $gump = new GUMP();
                 },
                 messages: {
                     name: {
-                        required: "Please Enter The Answer"
+                        required: "Entrez la reponse"
                     }
                 }
             });
@@ -82,19 +82,11 @@ $gump = new GUMP();
 
         <div id="login-intro" class="fl">
 
-            <h1> Forgot your password </h1>
+            <h1> Mot de passe oublié </h1>
 
 
         </div>
-        <!-- login-intro -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 39px height. -->
-        <a href="#" id="company-branding" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+        
 
     </div>
     <!-- end full-width -->
@@ -120,7 +112,7 @@ $gump = new GUMP();
             <br> <br> <br> <a href="index.php" class="button blue round side-content">Dashboard</a>
         <?php
         } else {
-            $data = "Answer Is Wrong";
+            $data = "Réponse erronée";
             echo "<script>window.location = 'forget_pass.php?msg=$data';</script>";
         }
         echo "</p></fieldset>";
@@ -140,10 +132,10 @@ $gump = new GUMP();
             </p>
 
             <form action="forget_pass.php" method="POST" id="login-form" class="cmxform" enctype="multipart/form-data">
-                What's your favorite movie?
+                Film Favori ?
                 <input type="text" name="name" id="name" class="round full-width-input"><br><br>
-                <input type="submit" name="submit" value="Submit" class="button round blue image-right ic-right-arrow">
-                <a href="index.php" class="button blue round side-content">Dashboard</a>
+                <input type="submit" name="submit" value="Envoyer" class="button round blue image-right ic-right-arrow">
+                <a href="index.php" class="button blue round side-content">Acceuil</a>
             </form>
             </fieldset>
         <?php } ?>
@@ -154,31 +146,8 @@ $gump = new GUMP();
 
 <!-- FOOTER -->
 <div id="footer">
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=286371564842269";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <div id="fb-root"></div>
-    <div class="fb-like" data-href="https://www.facebook.com/posnic.point.of.sale" data-width="450"
-         data-show-faces="true" data-send="true"></div>
-    <div class="g-plusone" data-href="https://plus.google.com/u/0/107268519615804538483"></div>
-    <script type="text/javascript">
-        (function () {
-            var po = document.createElement('script');
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-    </script>
-    <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-    </p>
+   
+    
 
 
 </div>

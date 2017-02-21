@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Login to Control Panel</title>
+    <title>GS</title>
 
     <!-- Stylesheets -->
 
@@ -64,7 +64,7 @@
 
         }
     } else {
-        echo "<p  style=color:red;margin-left:550px;font-size:20px >Invalid file</p>";
+        echo "<p  style=color:red;margin-left:550px;font-size:20px >Fichier Invalide</p>";
     }
 }
 
@@ -93,19 +93,13 @@
 
         <div id="login-intro" class="fl">
 
-            <h1>Store Setting </h1>
+            <h1>Paramètres</h1>
 
 
         </div>
         <!-- login-intro -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 39px height. -->
-        <a href="#" id="company-branding" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+        
 
     </div>
     <!-- end full-width -->
@@ -146,13 +140,13 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
                 <td>
 
                     <p>
-                        <label>Store Name</label>
+                        <label>Nom</label>
                         <input type="text" name="sname" id="name" class="round full-width-input"
                                value="<?php echo $line->name ?>" autofocus/>
                     </p></td>
                 <td>
                     <p>
-                        <label>Address</label>
+                        <label>Addresse</label>
                         <input type="text" name="address" id="address" class="round full-width-input"
                                value="<?php echo $line->address ?>" autofocus/>
                     </p></td>
@@ -167,7 +161,7 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
                 </td>
                 <td>
                     <p>
-                        <label>City</label>
+                        <label>Ville</label>
                         <input type="text" name="city" id="city" class="round full-width-input"
                                value="<?php echo $line->city ?>" autofocus/>
                     </p></td>
@@ -183,7 +177,7 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
                 </td>
                 <td>
                     <p>
-                        <label>Phone</label>
+                        <label>Tel</label>
                         <input type="text" name="phone" id="phone" class="round full-width-input"
                                value="<?php echo $line->phone ?>" autofocus/>
                     </p></td>
@@ -191,7 +185,7 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
             <tr>
                 <td>
                     <p>
-                        <label>Website</label>
+                        <label>Site</label>
                         <input type="text" name="website" id="website" class="round full-width-input"
                                value="<?php echo $line->web ?>" autofocus/>
                     </p></td>
@@ -213,16 +207,16 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
                     <input type="submit" class="button round blue image-right ic-right-arrow" name="submit"
                            value="Update"/>
                 </td>
-                <td><a href="index.php" class="button blue round side-content">Dashboard</a></td>
+                <td><a href="index.php" class="button blue round side-content">Acceuil</a></td>
             </tr>
         </table>
 
     </form>
     <div style="float: right;margin-top: -350px">
         <form action="" method="POST" id="login-form" class="cmxform" enctype="multipart/form-data">
-            <p>Upload Logo</p>
+            <p>Modifier Logo</p>
             <input type="file" name="file" id="file" class="round full-width-input"><br><br><br>
-            <input type="submit" name="submit" value="Submit" class="button round blue image-right ic-right-arrow">
+            <input type="submit" name="submit" value="Enregistrer" class="button round blue image-right ic-right-arrow">
         </form>
     </div>
 </div>
@@ -231,31 +225,7 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
 
 <!-- FOOTER -->
 <div id="footer">
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=286371564842269";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <div id="fb-root"></div>
-    <div class="fb-like" data-href="https://www.facebook.com/posnic.point.of.sale" data-width="450"
-         data-show-faces="true" data-send="true"></div>
-    <div class="g-plusone" data-href="https://plus.google.com/u/0/107268519615804538483"></div>
-    <script type="text/javascript">
-        (function () {
-            var po = document.createElement('script');
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-    </script>
-    <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-    </p>
+    
 
 
 </div>

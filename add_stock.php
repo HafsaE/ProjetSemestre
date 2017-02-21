@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Add Stock Category</title>
+    <title>GS - Stock</title>
 
     <!-- Stylesheets -->
 
@@ -37,24 +37,18 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="active-tab stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            <li><a href="dashboard.php" class="dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class="active-tab  stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+       
 
     </div>
     <!-- end full-width -->
@@ -70,13 +64,13 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Stock Management</h3>
+            
             <ul>
-                <li><a href="add_stock.php">Add Stock/Product</a></li>
-                <li><a href="view_product.php">View Stock/Product</a></li>
-                <li><a href="add_category.php">Add Stock Category</a></li>
-                <li><a href="view_category.php">view Stock Category</a></li>
-                <li><a href="view_stock_availability.php">view Stock Available</a></li>
+                <li><a href="add_stock.php">Ajouter Stock/Produit</a></li>
+                <li><a href="view_product.php">Afficher Stock/Produit</a></li>
+                <li><a href="add_category.php">Ajouter Categorie de stock</a></li>
+                <li><a href="view_category.php">Afficher Categories De stock</a></li>
+                <li><a href="view_stock_availability.php">Afficher Stock Disponible</a></li>
             </ul>
 
         </div>
@@ -86,13 +80,7 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Add Stock </h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                </div>
+                
                 <!-- end content-module-heading -->
 
                 <div class="content-module-main cf">
@@ -151,10 +139,10 @@ include_once("init.php");
                             } else {
 
                                 if ($db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price,category) values('$stockid','$name',0,'$supplier','$cost','$sell','$category')")) {
-                                    echo "<br><font color=green size=+1 > [ $name ] Stock Details Added !</font>";
+                                    echo "<br><font color=green size=+1 > Stock Ajouté avec succès</font>";
                                     $db->query("insert into stock_avail(name,quantity) values('$name',0)");
                                 } else
-                                    echo "<br><font color=red size=+1 >Problem in Adding !</font>";
+                                    echo "<br><font color=red size=+1 >Erreur !</font>";
 
                             }
 
@@ -176,39 +164,39 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "ST" . $max . "";
                                 ?>
-                                <td><span class="man">*</span>Stock&nbsp;ID:</td>
+                                <td><span class="man">*</span>ID&nbsp;Stock:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input"
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
 
-                                <td><span class="man">*</span>Name:</td>
-                                <td><input name="name" placeholder="ENTER STOCK NAME" type="text" id="name"
+                                <td><span class="man">*</span>Nom:</td>
+                                <td><input name="name" placeholder="Nom Du stock" type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
 
                             </tr>
                             <tr>
-                                <td><span class="man">*</span>Cost:</td>
-                                <td><input name="cost" placeholder="ENTER COST PRICE" type="text" id="cost"
+                                <td><span class="man">*</span>Prix:</td>
+                                <td><input name="cost" placeholder="Prix du Stock" type="text" id="cost"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($cost) ? $cost : ''; ?>"/></td>
 
-                                <td><span class="man">*</span>Selling&nbsp;Price</td>
-                                <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell"
+                                <td><span class="man">*</span>Prix de&nbsp;Vente</td>
+                                <td><input name="sell" placeholder="Prix De Vente" type="text" id="sell"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($sell) ? $sell : ''; ?>"/></td>
 
                             </tr>
                             <tr>
-                                <td>Supplier:</td>
-                                <td><input name="supplier" placeholder="ENTER SUPPLIER NAME" type="text" id="supplier"
+                                <td>Fournisseur:</td>
+                                <td><input name="supplier" placeholder="Nom Du Fournisseur" type="text" id="supplier"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($supplier) ? $supplier : ''; ?>"/></td>
 
-                                <td>Category:</td>
-                                <td><input name="category" placeholder="ENTER CATEGORY NAME" type="text" id="category"
+                                <td>Categorie:</td>
+                                <td><input name="category" placeholder="Catégorie" type="text" id="category"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
 
@@ -226,11 +214,11 @@ include_once("init.php");
                                 </td>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
+                                           name="Submit" value="Enregistrer">
                                     (Control + S)
 
                                 <td align="right"><input class="button round red   text-upper" type="reset" name="Reset"
-                                                         value="Reset"></td>
+                                                         value="Réinitialiser"></td>
                             </tr>
                         </table>
                     </form>
@@ -253,8 +241,7 @@ include_once("init.php");
 
     <!-- FOOTER -->
     <div id="footer">
-        <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-        </p>
+       
 
     </div>
     <!-- end footer -->

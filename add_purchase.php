@@ -6,7 +6,7 @@ include_once("init.php");
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>POSNIC - Add Purchase</title>
+        <title>GS - Ventes</title>
 
         <!-- Stylesheets -->
 
@@ -36,27 +36,20 @@ include_once("init.php");
 
             <div class="page-full-width cf">
 
-                <ul id="tabs" class="fl">
-                    <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-                    <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-                    <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-                    <li><a href="view_purchase.php" class="active-tab purchase-tab">Purchase</a></li>
-                    <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-                    <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-                    <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-                    <li><a href="view_report.php" class="report-tab">Reports</a></li>
-                </ul>
+               <ul id="tabs" class="fl">
+            <li><a href="dashboard.php" class="dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class=" active-tab  purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
+        </ul>
                 <!-- end tabs -->
 
                 <!-- Change this image to your own company's logo -->
-                <!-- The logo will automatically be resized to 30px height. -->
-                <a href="#" id="company-branding-small" class="fr"><img src="<?php
-        if (isset($_SESSION['logo'])) {
-            echo "upload/" . $_SESSION['logo'];
-        } else {
-            echo "upload/posnic.png";
-        }
-        ?>" alt="Point of Sale"/></a>
+             
 
             </div>
             <!-- end full-width -->
@@ -72,10 +65,10 @@ include_once("init.php");
 
                 <div class="side-menu fl">
 
-                    <h3>Purchase Management</h3>
+                 
                     <ul>
-                        <li><a href="add_purchase.php">Add Purchase</a></li>
-                        <li><a href="view_purchase.php">View Purchase </a></li>
+                        <li><a href="add_purchase.php">Ajouter Achat</a></li>
+                        <li><a href="view_purchase.php">Afficher Achats </a></li>
                     </ul>
 
                 </div>
@@ -85,13 +78,7 @@ include_once("init.php");
 
                     <div class="content-module">
 
-                        <div class="content-module-heading cf">
-
-                            <h3 class="fl">Add Purchase</h3>
-                            <span class="fr expand-collapse-text">Click to collapse</span>
-                            <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                        </div>
+                      
                         <!-- end content-module-heading -->
 
                         <div class="content-module-main cf">
@@ -99,10 +86,12 @@ include_once("init.php");
 
                             <?php
                             //Gump is libarary for Validatoin
+                           
                             if (isset($_GET['msg'])) {
                                 echo $_GET['msg'];
                             }
                             if (isset($_POST['supplier']) and isset($_POST['stock_name'])) {
+                                echo "<script>alert('fonction')</script>";
                                 $_POST = $gump->sanitize($_POST);
                                 $gump->validation_rules(array(
                                     'supplier' => 'required|max_len,100|min_len,3'
@@ -134,8 +123,11 @@ include_once("init.php");
                                     $stock_name = $_POST['stock_name'];
 
                                     $count = $db->countOf("supplier_details", "supplier_name='$supplier'");
+                                    
                                     if ($count == 0) {
                                         $db->query("insert into supplier_details(supplier_name,supplier_address,supplier_contact1) values('$supplier','$address','$contact')");
+                                        echo "<script>alert('111111111')</script>";
+
                                     }
                                     $quty = $_POST['quty'];
                                     $date = date("d M Y h:i A");
@@ -154,27 +146,30 @@ include_once("init.php");
                                     $selected_date = $_POST['date'];
                                     $selected_date = strtotime($selected_date);
                                     $date = date('Y-m-d H:i:s', $selected_date);
-                                    for ($i = 0; $i < count($stock_name); $i++) {
-                                        $count = $db->countOf("stock_avail", "name='$stock_name[$i]'");
+                                    //for ($i = 0; $i < count($stock_name); $i++) {
+                                        $count = $db->countOf("stock_avail", "name='$stock_name'");
+                                            echo "<script>alert('$stock_name')</script>";
                                         if ($count == 0) {
-                                            $db->query("insert into stock_avail(name,quantity) values('$stock_name[$i]',$quty[$i])");
+                                            $db->query("insert into stock_avail(name,quantity) values('$stock_name',$quty)");
                                             echo "<br><font color=green size=+1 >New Stock Entry Inserted !</font>";
 
-                                            $db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price) values('$autoid','$stock_name[$i]',0,'$supplier','$cost[$i]','$sell[$i]')");
+                                            $db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price) values('$autoid','$stock_name',0,'$supplier','$cost','$sell')");
 
 
-                                            $db->query("INSERT INTO stock_entries(stock_id,stock_name, stock_supplier_name, quantity, company_price, selling_price, opening_stock, closing_stock, date, username, type, total, payment, balance, mode, description, due, subtotal,count1) VALUES ( '$autoid1','$stock_name[$i]','$supplier','$quty[$i]','$cost[$i]','$sell[$i]',0,'$quty[$i]','$date','$username','entry','$total[$i]','$payment','$balance','$mode','$description','$due','$subtotal',$i+1')");
+                                            $db->query("INSERT INTO stock_entries(stock_id,stock_name, stock_supplier_name, quantity, company_price, selling_price, opening_stock, closing_stock, date, username, type, total, payment, balance, mode, description, due, subtotal) VALUES ( '$autoid1','$stock_name','$supplier','$quty','$cost','$sell',0,'$quty','$date','$username','entry','$total','$payment','$balance','$mode','$description','$due','$subtotal')");
+                                            echo "<script>alert('22222222')</script>";
                                         } else if ($count == 1) {
 
-                                            $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$stock_name[$i]'");
-                                            $amount1 = $amount + $quty[$i];
-                                            $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$stock_name[$i]'");
-                                            $db->query("INSERT INTO stock_entries(stock_id,stock_name,stock_supplier_name,quantity,company_price,selling_price,opening_stock,closing_stock,date,username,type,total,mode,description,subtotal,count1) VALUES ('$autoid1','$stock_name[$i]','$supplier','$quty[$i]','$cost[$i]','$sell[$i]','$amount','$amount1','$date','$username','entry','$total[$i]','$mode','$description','$subtotal',$i+1)");
+                                            $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$stock_name'");
+                                            $amount1 = $amount + $quty;
+                                            $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$stock_name'");
+                                            $db->query("INSERT INTO stock_entries(stock_id,stock_name,stock_supplier_name,quantity,company_price,selling_price,opening_stock,closing_stock,date,username,type,total,mode,description,subtotal) VALUES ('$autoid1','$stock_name','$supplier','$quty','$cost','$sell','$amount','$amount1','$date','$username','entry','$total','$mode','$description','$subtotal')");
                                             //INSERT INTO `stock`.`stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`)
                                             //VALUES (NULL, '$autoid1', '$stock_name[$i]', '$supplier', '', '$quantity', '$brate', '$srate', '$amount', '$amount1', '$mysqldate', 'sdd', 'entry', 'Sa45', '432.90', '2342.90', '24.34', 'cash', 'sdflj', '2010-03-25 12:32:02', '45645', '1');
+                                            echo "<script>alert('3333333333')</script>";
                                         }
-                                    }
-                                    $msg = "<br><font color=green size=6px >Parchase order Added successfully Ref: [" . $_POST['purchaseid'] . "] !</font>";
+                                    //}
+                                    $msg = "<br><font color=green size=6px >Achat ajoute avec succes Ref: [" . $_POST['purchaseid'] . "] !</font>";
                                     echo "<script>window.location = 'add_purchase.php?msg=$msg';</script>";
                                 }
                             }
@@ -183,7 +178,7 @@ include_once("init.php");
                             <form name="form1" method="post" id="form1" action="">
                                 <input type="hidden" id="posnic_total">
 
-                                <p><strong>Add Stock/Product </strong> - Add New ( Control +2)</p>
+                                <p><strong>Ajouter Achat </strong> </p>
                                 <table class="form" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                             <?php
@@ -195,14 +190,14 @@ include_once("init.php");
                                 }
                                   ?>
                                         <?php if($str == ''){ ?>
-                                        <td>Purchase ID:</td>
+                                        <td>ID:</td>
                                         <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "
                                                    value="<?php echo $autoid_new ?>"/></td>
                                         
                                         <?php } ?>
                                         <?php if($str != ''){ ?>
-                                        <td>Purchase ID:</td>
+                                        <td> ID:</td>
                                         <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "
                                                    value="<?php echo $autoid ?>"/></td>
@@ -216,16 +211,16 @@ include_once("init.php");
 
                                     </tr>
                                     <tr>
-                                        <td><span class="man">*</span>Supplier:</td>
-                                        <td><input name="supplier" placeholder="ENTER SUPPLIER" type="text" id="supplier"
+                                        <td><span class="man">*</span>Fournisseur :</td>
+                                        <td><input name="supplier" placeholder="" type="text" id="supplier"
                                                    maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
-                                        <td>Address:</td>
-                                        <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
+                                        <td>Addresse:</td>
+                                        <td><input name="address" placeholder="" type="text" id="address"
                                                    maxlength="200" class="round default-width-input"/></td>
 
                                         <td>contact:</td>
-                                        <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
+                                        <td><input name="contact" placeholder="" type="text" id="contact1"
                                                    maxlength="200" class="round default-width-input"
                                                    onkeypress="return numbersonly(event)" style="width:120px "/></td>
 
@@ -235,29 +230,29 @@ include_once("init.php");
                                 <input type="hidden" id="edit_guid">
                                 <table class="form">
                                     <tr>
-                                        <td>Item</td>
-                                        <td>Quantity</td>
-                                        <td>Cost</td>
-                                        <td>Selling</td>
-                                        <td>Available Stock</td>
+                                        <td>Produit</td>
+                                        <td>Quantite</td>
+                                        <td>Prix</td>
+                                        <td>Prix de vente</td>
+                                        <td>Disponible</td>
                                         <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
                                         <td> &nbsp;</td>
                                     </tr>
                                     <tr>
 
-                                        <td><input name="" type="text" id="item" maxlength="200"
+                                        <td><input name="stock_name" type="text" id="item" maxlength="200"
                                                    class="round default-width-input " style="width: 150px"/></td>
 
-                                        <td><input name="" type="text" id="quty" maxlength="200"
+                                        <td><input name="quty" type="text" id="quty" maxlength="200"
                                                    class="round default-width-input my_with"
                                                    onKeyPress="quantity_chnage(event);return numbersonly(event);"
                                                    onkeyup="total_amount();unique_check()"/></td>
 
-                                        <td><input name="" type="text" id="cost" readonly="readonly" maxlength="200"
+                                        <td><input name="cost" type="text" id="cost" readonly="readonly" maxlength="200"
                                                    class="round default-width-input my_with"/></td>
 
 
-                                        <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200"
+                                        <td><input name="sell" type="text" id="sell" readonly="readonly" maxlength="200"
                                                    class="round default-width-input my_with"/></td>
 
 
@@ -265,7 +260,7 @@ include_once("init.php");
                                                    class="round  my_with"/></td>
 
 
-                                        <td><input name="" type="text" id="total" maxlength="200"
+                                        <td><input name="total" type="text" id="total" maxlength="200"
                                                    class="round default-width-input " style="width:120px;  margin-left: 20px"/>
                                         </td>
 
@@ -279,19 +274,19 @@ include_once("init.php");
 
                                 <table class="form">
                                     <tr>
-                                        <td>Mode &nbsp;</td>
+                                        <td>Mode de paiement &nbsp;</td>
                                         <td>
                                             <select name="mode">
-                                                <option value="cash">Cash</option>
+                                                
                                                 <option value="cash">Cash</option>
                                                 <option value="cheque">Cheque</option>
 
-                                                <option value="other">Other</option>
+                                                <option value="other">Autre</option>
                                             </select>
                                         </td>
                                         <td>Description</td>
                                         <td><textarea name="description"></textarea></td>
-                                        <td>Grand Total:<input type="hidden" readonly="readonly" id="grand_total"
+                                        <td>Total:<input type="hidden" readonly="readonly" id="grand_total"
                                                                name="subtotal">
                                             <input type="text" id="main_grand_total" class="round default-width-input"
                                                    onkeypress="return numbersonly(event)" readonly="readonly"
@@ -306,13 +301,12 @@ include_once("init.php");
                                     <tr>
                                         <td>
                                             <input class="button round blue image-right ic-add text-upper" type="submit"
-                                                   name="Submit" value="Add" onclick="return checkValid(this);">
+                                                   name="Submit" value="Ajouter" onclick="return checkValid(this);">
                                         </td>
-                                        <td> (Control + S)
-                                           </td>
+                                        
                                         <td> &nbsp;</td>
                                         <td> <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
-                                                   value="Reset"> </td>
+                                                   value="Reinitialiser"> </td>
                                     </tr>
                                 </table>
                             </form>
@@ -335,11 +329,7 @@ include_once("init.php");
 
 
         <!-- FOOTER -->
-        <div id="footer">
-            <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-            </p>
-
-        </div>
+       
         <!-- end footer -->
 
     </body>

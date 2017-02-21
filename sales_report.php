@@ -21,7 +21,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
             "http://www.w3.org/TR/html4/loose.dtd">
         <html>
         <head>
-            <title>Sale Report</title>
+            <title>Rapport de Vente</title>
             <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         </head>
         <style type="text/css" media="print">
@@ -37,7 +37,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
             }
         </script>
         <body>
-        <input name="print" type="button" value="Print" id="printButton" onClick="printpage()">
+        <input name="print" type="button" value="Imprimer" id="printButton" onClick="printpage()">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td align="center">
@@ -47,7 +47,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                         <strong><?php echo $line4->name; ?></strong><br/>
                         <?php echo $line4->address; ?>,<?php echo $line4->place; ?>, <br/>
                         <?php echo $line4->city; ?>,<?php echo $line4->pin; ?><br/>
-                        Website<strong>:<?php echo $line4->web; ?></strong><br>Email<strong>:<?php echo $line4->email; ?></strong><br/>Phone
+                        Site<strong>:<?php echo $line4->web; ?></strong><br>Email<strong>:<?php echo $line4->email; ?></strong><br/>Tel
                         <strong>:<?php echo $line4->phone; ?></strong>
                         <br/>
                         <?php ?>
@@ -55,7 +55,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                     <table width="595" border="0" cellspacing="0" cellpadding="0">
 
                         <tr>
-                            <td height="30" align="center"><strong>Sales Report </strong></td>
+                            <td height="30" align="center"><strong>Rapport de vente </strong></td>
                         </tr>
                         <tr>
                             <td height="30" align="center">&nbsp;</td>
@@ -64,12 +64,12 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                             <td align="right">
                                 <table width="300" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td width="150"><strong>Total Sales </strong></td>
+                                        <td width="150"><strong>Total  </strong></td>
                                         <td width="150">
                                             &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(subtotal) FROM stock_sales where count1=1 AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Received Amount</strong></td>
+                                        <td><strong>Montant Recu</strong></td>
                                         <td>
                                             &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(payment) FROM stock_sales where count1=1 AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
                                     </tr>
@@ -90,9 +90,9 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                             <td height="20">
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td width="45"><strong>From</strong></td>
+                                        <td width="45"><strong>Du</strong></td>
                                         <td width="393">&nbsp;<?php echo $_GET['from_sales_date']; ?></td>
-                                        <td width="41"><strong>To</strong></td>
+                                        <td width="41"><strong>Au</strong></td>
                                         <td width="116">&nbsp;<?php echo $_GET['to_sales_date']; ?></td>
                                     </tr>
                                 </table>
@@ -108,9 +108,9 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td><strong>Date</strong></td>
-                                        <td><strong>Sales ID </strong></td>
-                                        <td><strong>Customer</strong></td>
-                                        <td><strong>Paid</strong></td>
+                                        <td><strong>Id Vente</strong></td>
+                                        <td><strong>Cient</strong></td>
+                                        <td><strong>Payé</strong></td>
                                         <td><strong>Balance</strong></td>
                                         <td><strong>Total</strong></td>
                                     </tr>

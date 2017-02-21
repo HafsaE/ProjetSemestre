@@ -1,4 +1,5 @@
 	<link rel="stylesheet" href="css/cmxform.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<script src="js/lib/jquery.min.js" type="text/javascript"></script>
 	<script src="js/lib/jquery.hotkeys-0.7.9.min.js" type="text/javascript"></script>
 	<script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>

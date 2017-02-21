@@ -140,11 +140,11 @@ cite {
 
 /* ---------- TYPOGRAPHY ---------- */
 body, form {
-    font-family: "Droid Sans", Helvetica, Arial, sans-serif;
+    font-family: "Lato";
     line-height: 1.125em; /* 18/16 */
 }
 
-p, .button, form input, ul#nav li ul, ul#tabs, div.side-menu ul li a, table,
+p, .button, form input, ul#nav li ul,  div.side-menu ul li a, table,
 .information-box, .confirmation-box, .error-box, .error-message, .warning-box, ol, .regular-ul, 
 .custom-ul, blockquote, cite { font-size: 0.85em; /* 12/16 */ }
 
@@ -165,13 +165,13 @@ h5 { font-size: 0.625em; /* 10/16 */ }
 
 
 /* ---------- COLORS ---------- */
-a { color: #2069b4; }
+a { color: #00004d; }
 a:hover { color: #2a2e36; }
 
 p a, p a:hover { border-bottom: 1px dotted; }
 
 .blue {
-    background-color: #2069b4;
+    background-color: #00004d;
     color: white;
 }
 .blue:hover {
@@ -220,7 +220,8 @@ p a, p a:hover { border-bottom: 1px dotted; }
 }
 
 /* Page Container Style */
-.page-full-width { padding: 0 1.875em; /* 30/16 */ }
+.page-full-width { padding: 0 1.875em; /* 30/16 */ 
+}
 
 .page-limited {
     width: 60em; /* 960/16 */
@@ -234,14 +235,14 @@ p a, p a:hover { border-bottom: 1px dotted; }
 /* ---------- BUTTONS ---------- */
 .button {
     padding: 0.833em; /* 10/12 */
-
+    text-align: center;
     display: inline-block;
     text-decoration: none;
     background-repeat: no-repeat;
 }
 
 .dark {
-    background-color: #3f4551;
+    background-color: #00004d;
     color: white;
 }
 .dark:hover {
@@ -295,13 +296,13 @@ p a, p a:hover { border-bottom: 1px dotted; }
     color: #7fcdff;
 }
 
-.menu-settings { background-image: url("../images/icons/menu/menu-settings.png"); }
+/*.menu-settings { background-image: url("../images/icons/menu/menu-settings.png"); }
 .menu-settings:hover { background-image: url("../images/icons/menu/menu-settings-over.png"); }
 
 .menu-logoff { background-image: url("../images/icons/menu/menu-logoff.png"); }
 .menu-logoff:hover { background-image: url("../images/icons/menu/menu-logoff-over.png"); }
 
-.menu-user { background-image: url("../images/icons/menu/menu-user.png"); }
+.menu-user { background-image: url("../images/icons/menu/menu-user.png"); }*/
 
 
 
@@ -413,6 +414,10 @@ form input.error-input:hover { border: 1px solid #b03e27; }
 
 
 /* ---------- MENU ---------- */
+ul#tabs{
+    font-size: 1em;
+    font-weight: bold;
+}
 ul#nav {
     list-style-type: none;
 }
@@ -431,7 +436,7 @@ ul#nav li:hover a {
 }
 
 ul#nav li.v-sep {
-    border-right: 1px solid #3f4551;
+    
     margin-right: 0.625em; /* 10/16 */
     padding-right: 0.625em; /* 10/16 */
 }
@@ -444,10 +449,10 @@ ul#nav li ul {
     left: -9999px;
 }
 ul#nav li ul li a {
-    color: white;
+    color: #00004d;
     padding: 0.833em 0 0.833em 3em;
     border-top: 1px solid #6a7282;
-    background: #5d6677 url('../images/menu-indicator.png') no-repeat right center;
+    background: #5d6677 no-repeat right center;
     display: block;
     width: 100%;
     white-space: nowrap;
@@ -469,13 +474,14 @@ ul#nav li ul li a:hover { background-color: #7a8497; }
 
 /* ---------- TOP + HEADER ---------- */
 div#top-bar {
-    background-color: #2a2e36;
+    background-color: #fff;
     padding: 0.625em 0; /* 10/16 */
 }
 
 div#header { padding: 1.25em 0; /* 20/16 */ }
 
-div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */ }
+div#header-with-tabs { padding: 1.25em 0 0 0; /* 20/16 */
+width : 100%; }
 
 div#login-intro {
     background: transparent url('../images/login-icon.png') no-repeat left center;
@@ -492,12 +498,14 @@ a#company-branding-small img { height: 60px; }
 
 
 /* ---------- TABS ---------- */
-ul#tabs { list-style-type: none; }
+ul#tabs { list-style-type: none; 
+}
 
 ul#tabs li { float: left; }
 
 ul#tabs li a {
-    border: 1px solid #eeefef;
+    /*border: 5px solid #eeefef;*/
+
     border-bottom: none;
     padding: 1.666em 0.833em; /* 20/12 10/12 */
     margin: 0 0.416em -1px 0;
@@ -507,48 +515,51 @@ ul#tabs li a {
 ul#tabs li a:hover { color: #2a2e36; }
 
 ul#tabs li a.dashboard-tab {
-    background: transparent url('../images/tab-dashboard.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
+
 }
 ul#tabs li a.sales-tab {
-    background: transparent url('../images/sales-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 
 ul#tabs li a.customers-tab {
-    background: transparent url('../images/customer-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 
 ul#tabs li a.purchase-tab {
-    background: transparent url('../images/purchase-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 
 ul#tabs li a.supplier-tab {
-    background: transparent url('../images/supplier-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 ul#tabs li a.stock-tab {
-    background: transparent url('../images/stock-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 ul#tabs li a.payment-tab {
-    background: transparent url('../images/payment-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 ul#tabs li a.report-tab {
-    background: transparent url('../images/report-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */	
 }
 ul#tabs li a.active-tab, ul#tabs li a.active-tab:hover {
-    background-color: #f8f9fa;
+    /*background-color: #f8f9fa;*/
     font-weight: bold;
+    font-size: 1.05em;
     color: #2a2e36;
+
 }
 ul#tabs li .active-tab
 {
-    background: transparent url('../images/sales-icon.png') no-repeat 0.833em center /* 10/12 */;
+    background: transparent  no-repeat 0.833em center /* 10/12 */;
     padding-left: 3em; /* 36/12 */   
 }
 
@@ -560,7 +571,7 @@ ul#tabs li .active-tab
 table { width: 100%; margin-bottom: 1.25em; /* 20/16 */ }
 
 table th {
-    background-color: #5d6677;
+    background-color: #00004d;
     color: white;
     text-transform: uppercase;
     padding: 1.25em 0 1.25em 1.25em; /* 15/12 */
@@ -574,7 +585,7 @@ table tbody td {
 }
 
 /* Alternate table row */
-table tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+table tbody tr:nth-child(odd) { /*background-color: #f8f9fa;*/ }
 
 /* Push the first cell to the right so it doesn't stick to the table border */
 table td:first-child, table th:first-child {
@@ -668,7 +679,7 @@ ol, .regular-ul, .custom-ul { margin-bottom: 1.25em; /* 20/16 */ }
 
 /* ---------- CONTENT ---------- */
 div#content {
-    background: #f8f9fa url('../images/artwork-pattern.png') repeat-x left bottom;
+    background: #fff repeat-x left bottom;
     border: 1px solid #eeefef;
     padding: 1.875em 0; /* 30/16 */
 }
@@ -698,7 +709,7 @@ div.side-menu ul li a {
     padding: 0.833em 1.25em; /* 10/12 15/12 */
     border-top: 1px solid #f8f9fa;
     display: block;
-    background: white url('../images/menu-dark-indicator.png') no-repeat right center;
+    background: white no-repeat right center;
 }
 div.side-menu ul li a:hover {
     background-color: #f8f9fa;
@@ -713,7 +724,7 @@ div.content-module {
 }
 
 div.content-module-heading {
-    background: #3f4551;
+    background: #000;
     cursor: pointer;
 }
 

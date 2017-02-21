@@ -33,14 +33,14 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="active-tab dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class=" stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            <li><a href="dashboard.php" class="active-tab dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
@@ -66,7 +66,7 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Quick Links</h3>
+            
             <ul>
                 <li><a href="add_sales.php">Add Sales</a></li>
                 <li><a href="add_purchase.php">Add Purchase</a></li>
@@ -82,13 +82,7 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Statistics</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                </div>
+                
                 <!-- end content-module-heading -->
 
                 <div class="content-module-main cf">

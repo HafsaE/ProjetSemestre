@@ -6,7 +6,7 @@ include_once("init.php");
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>POSNIC - Stock</title>
+        <title>GS - Stock</title>
 
         <!-- Stylesheets -->
         <!---->
@@ -35,27 +35,18 @@ include_once("init.php");
             <div class="page-full-width cf">
 
                 <ul id="tabs" class="fl">
-                    <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-                    <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-                    <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-                    <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-                    <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-                    <li><a href="view_product.php" class="active-tab stock-tab">Stocks / Products</a></li>
-                    <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-                    <li><a href="view_report.php" class="report-tab">Reports</a></li>
-                </ul>
+            <li><a href="dashboard.php" class=" dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" active-tab stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments</a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
+        </ul>
                 <!-- end tabs -->
 
-                <!-- Change this image to your own company's logo -->
-                <!-- The logo will automatically be resized to 30px height. -->
-                <a href="#" id="company-branding-small" class="fr"><img src="<?php
-                    if (isset($_SESSION['logo'])) {
-                        echo "upload/" . $_SESSION['logo'];
-                    } else {
-                        echo "upload/posnic.png";
-                    }
-                    ?>" alt="Point of Sale"/></a>
-
+                
             </div>
             <!-- end full-width -->
 
@@ -70,14 +61,14 @@ include_once("init.php");
 
                 <div class="side-menu fl">
 
-                    <h3>Stock Management</h3>
-                    <ul>
-                        <li><a href="add_stock.php">Add Stock/Product</a></li>
-                        <li><a href="view_product.php">View Stock/Product</a></li>
-                        <li><a href="add_category.php">Add Stock Category</a></li>
-                        <li><a href="view_category.php">view Stock Category</a></li>
-                        <li><a href="view_stock_availability.php">view Stock Available</a></li>
-                    </ul>
+                   
+            <ul>
+                <li><a href="add_stock.php">Ajouter Stock/Produit</a></li>
+                <li><a href="view_product.php">Afficher Stock/Produit</a></li>
+                <li><a href="add_category.php">Ajouter Catégorie De Stock</a></li>
+                <li><a href="view_category.php">Afficher Catégorie De Stock</a></li>
+                <li><a href="view_stock_availability.php">Afficher Disponible Aux Stocks</a></li>
+            </ul>
 
 
                 </div>
@@ -87,27 +78,20 @@ include_once("init.php");
 
                     <div class="content-module">
 
-                        <div class="content-module-heading cf">
-
-                            <h3 class="fl">Stock/Product</h3>
-                            <span class="fr expand-collapse-text">Click to collapse</span>
-                            <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                        </div>
-                        <!-- end content-module-heading -->
+                        
 
                         <div class="content-module-main cf">
 
 
                             <table>
                                 <form action="" method="post" name="search">
-                                    <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search"
+                                    <input name="searchtxt" type="text" class="round my_text_box" placeholder="Rechercher ..."
                                            style="margin-left: 200px">
                                     &nbsp;&nbsp;<input name="Search" type="submit" class="my_button round blue   text-upper"
-                                                       value="Search">
+                                                       value="Rechercher">
                                 </form>
                                 <form action="" method="get" name="limit_go">
-                                    Page per Record<input name="limit" type="text" class="round my_text_box" id="search_limit"
+                                    Affichage Par Page<input name="limit" type="text" class="round my_text_box" id="search_limit"
                                                           style="margin-left:5px;"
                                                           value="<?php
                                                           if (isset($_GET['limit']))
@@ -219,9 +203,9 @@ include_once("init.php");
                                             //previous button
 
                                             if ($page > 1)
-                                                $pagination .= "<a href=\"view_product.php?page=$prev&limit=$limit\" class=my_pagination >Previous</a>";
+                                                $pagination .= "<a href=\"view_product.php?page=$prev&limit=$limit\" class=my_pagination >Précédent</a>";
                                             else
-                                                $pagination .= "<span class=my_pagination>Previous</span>";
+                                                $pagination .= "<span class=my_pagination>Précédent</span>";
 
 
                                             //pages
@@ -298,17 +282,17 @@ include_once("init.php");
                                             //next button
 
                                             if ($page < $counter - 1)
-                                                $pagination .= "<a href=\"view_product.php?page=$next&limit=$limit\" class=my_pagination>Next</a>";
+                                                $pagination .= "<a href=\"view_product.php?page=$next&limit=$limit\" class=my_pagination>Suivant</a>";
                                             else
-                                                $pagination .= "<span class= my_pagination >Next</span>";
+                                                $pagination .= "<span class= my_pagination >Suivant</span>";
 
                                             $pagination .= "</div>\n";
                                         }
                                         ?>
                                         <tr>
                                             <td>&nbsp;</td>
-                                            <th>No</th>
-                                            <th>Stock Name</th>
+                                            <th>No Du stock</th>
+                                            <th>Nom Du sTock</th>
 
                                             <th>Stock</th>
                                             <td>&nbsp;</td>
@@ -354,7 +338,7 @@ include_once("init.php");
                                         <table>
                                             <tr>
                                                 <td align='right'style="width:20%"><?php $end = $no + $co1; ?>
-                                                    Showing <?php echo $no + 1; ?> to <?php echo $end; ?> of <?php echo $co; ?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                                    De <?php echo $no + 1; ?> A <?php echo $end; ?> Sur <?php echo $co; ?> </td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
                                             </tr>
 
 
@@ -366,8 +350,7 @@ include_once("init.php");
                         </div>
                     </div>
                     <div id="footer">
-                        <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-                        </p>
+                        
 
                     </div>
                     <!-- end footer -->

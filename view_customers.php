@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Customer</title>
+    <title>GS - Clients </title>
 
     <!-- Stylesheets -->
     <!---->
@@ -38,25 +38,20 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=" sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class="active-tab customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class="  supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            <li><a href="dashboard.php" class=" dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" active-tab customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments </a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
         <!-- Change this image to your own company's logo -->
         <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
+        
     </div>
     <!-- end full-width -->
 
@@ -71,10 +66,10 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Customer Management</h3>
+            
             <ul>
-                <li><a href="add_customer.php">Add Customer</a></li>
-                <li><a href="view_customers.php">View Customers</a></li>
+                <li><a href="add_customer.php">Ajouter Client</a></li>
+                <li><a href="view_customers.php">Afficher Clients</a></li>
             </ul>
 
         </div>
@@ -84,30 +79,23 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Customers</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                </div>
-                <!-- end content-module-heading -->
+              
 
                 <div class="content-module-main cf">
 
 
                     <table>
                         <form action="" method="post" name="search">
-                            <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
+                            <input name="searchtxt" type="text" class="round my_text_box" placeholder="Rechercher">
                             &nbsp;&nbsp;<input name="Search" type="submit" class="my_button round blue   text-upper"
-                                               value="Search">
+                                               value="OK">
                         </form>
                         <form action="" method="get" name="limit_go">
-                            Page per Record<input name="limit" type="text" class="round my_text_box" id="search_limit"
+                            Clients par page<input name="limit" type="text" class="round my_text_box" id="search_limit"
                                                   style="margin-left:5px;"
                                                   value="<?php if (isset($_GET['limit'])) echo $_GET['limit']; else echo "10"; ?>"
                                                   size="3" maxlength="3">
-                            <input name="go" type="button" value="Go" class=" round blue my_button  text-upper"
+                            <input name="go" type="button" value="OK" class=" round blue my_button  text-upper"
                                    onclick="return confirmLimitSubmit()">
                         </form>
 
@@ -121,7 +109,7 @@ include_once("init.php");
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
                                    style="margin-left:5px;"/>-->
-                            <input name="dsubmit" type="button" value="Delete Selected"
+                            <input name="dsubmit" type="button" value="Supprimer Selection"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
 <!-- <input type="button" name="Deleteall" value="Delect All Records"
@@ -236,11 +224,11 @@ include_once("init.php");
 
                                     if ($page > 1)
 
-                                        $pagination .= "<a href=\"view_customers.php?page=$prev&limit=$limit\" class=my_pagination >Previous</a>";
+                                        $pagination .= "<a href=\"view_customers.php?page=$prev&limit=$limit\" class=my_pagination >Précédent</a>";
 
                                     else
 
-                                        $pagination .= "<span class=my_pagination>Previous</span>";
+                                        $pagination .= "<span class=my_pagination>Précédent</span>";
 
 
                                     //pages
@@ -346,11 +334,11 @@ include_once("init.php");
 
                                     if ($page < $counter - 1)
 
-                                        $pagination .= "<a href=\"view_customers.php?page=$next&limit=$limit\" class=my_pagination>Next</a>";
+                                        $pagination .= "<a href=\"view_customers.php?page=$next&limit=$limit\" class=my_pagination>Suivant</a>";
 
                                     else
 
-                                        $pagination .= "<span class= my_pagination >Next</span>";
+                                        $pagination .= "<span class= my_pagination >Suivant</span>";
 
                                     $pagination .= "</div>\n";
 
@@ -359,11 +347,11 @@ include_once("init.php");
                                 ?>
                                 <tr>
                                     <th>No</th>
-                                    <th>Supplier Name</th>
+                                    <th>Nom</th>
                                     <th>Contact</th>
                                     <th>Balance</th>
-                                    <th>Edit /Delete</th>
-                                    <th>Select</th>
+                                    <th>Modifier / Supprimer</th>
+                                    <th>Selectionner</th>
                                 </tr>
 
                                 <?php
@@ -410,9 +398,9 @@ include_once("init.php");
                                     <tr>
                                     <td align='right'style="width:20%"><?php $end=$no+$co1;?>
                                          <?php if($end !=''){?>
-                                            Showing <?php echo $no+1;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                            De <?php echo $no+1;?> a <?php echo $end;?> sur <?php echo $co;?> </td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
                                  <?php }else{?>
-                                    Showing <?php echo $no;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                    De <?php echo $no;?> a <?php echo $end;?> sur <?php echo $co;?> </td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
                                       <?php }?>
                                     </tr>
                                
@@ -429,8 +417,7 @@ include_once("init.php");
                 </div>
             </div>
             <div id="footer">
-                <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-                </p>
+                
 
             </div>
             <!-- end footer -->

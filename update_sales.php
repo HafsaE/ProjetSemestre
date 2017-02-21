@@ -6,7 +6,7 @@ include_once("init.php");
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>POSNIC - Update Supplier</title>
+        <title>GS - Vente</title>
 
         <!-- Stylesheets -->
 
@@ -37,27 +37,19 @@ include_once("init.php");
 
             <div class="page-full-width cf">
 
-                <ul id="tabs" class="fl">
-                    <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-                    <li><a href="view_sales.php" class="active-tab sales-tab">Sales</a></li>
-                    <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-                    <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-                    <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-                    <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-                    <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-                    <li><a href="view_report.php" class="report-tab">Reports</a></li>
-                </ul>
+               <ul id="tabs" class="fl">
+            <li><a href="dashboard.php" class=" dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="active-tab sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments </a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
+        </ul>
                 <!-- end tabs -->
 
-                <!-- Change this image to your own company's logo -->
-                <!-- The logo will automatically be resized to 30px height. -->
-                <a href="#" id="company-branding-small" class="fr"><img src="<?php
-if (isset($_SESSION['logo'])) {
-    echo "upload/" . $_SESSION['logo'];
-} else {
-    echo "upload/posnic.png";
-}
-?>" alt="Point of Sale"/></a>
+              
 
             </div>
             <!-- end full-width -->
@@ -73,10 +65,10 @@ if (isset($_SESSION['logo'])) {
 
                 <div class="side-menu fl">
 
-                    <h3>Sales Management</h3>
+                    
                     <ul>
-                        <li><a href="add_sales.php">Add Sales</a></li>
-                        <li><a href="view_sales.php">View Sales</a></li>
+                        <li><a href="add_sales.php">Ajouter Vente</a></li>
+                        <li><a href="view_sales.php">Afficher Ventes</a></li>
 
                     </ul>
 
@@ -87,15 +79,7 @@ if (isset($_SESSION['logo'])) {
 
                     <div class="content-module">
 
-                        <div class="content-module-heading cf">
-
-                            <h3 class="fl">Update sales</h3>
-                            <span class="fr expand-collapse-text">Click to collapse</span>
-                            <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                        </div>
-                        <!-- end content-module-heading -->
-
+                      
                         <div class="content-module-main cf">
 
                             <?php
@@ -222,7 +206,7 @@ if (isset($_SESSION['logo'])) {
                             $max = $max + 1;
                             $autoid = "SL" . $max . "";
                             ?>
-                                        <td>Bill no:</td>
+                                        <td>Note No:</td>
                                         <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "
                                                    value="<?php echo $line->transactionid; ?>"/></td>
@@ -235,12 +219,12 @@ if (isset($_SESSION['logo'])) {
 
                                     </tr>
                                     <tr>
-                                        <td>Customer:</td>
+                                        <td>Client:</td>
                                         <td><input name="supplier" placeholder="ENTER SUPPLIER" type="text" id="supplier"
                                                    value="<?php echo $line->customer_id; ?> " maxlength="200"
                                                    class="round default-width-input" style="width:130px "/></td>
 
-                                        <td>Address:</td>
+                                        <td>Addresse:</td>
                                         <td><input name="address" placeholder="ENTER ADDRESS" type="text"
                                                    value="<?php $quantity = $db->queryUniqueValue("SELECT customer_address FROM customer_details WHERE customer_name='" . $line->customer_id . "'");
                                         echo $quantity;
@@ -262,14 +246,14 @@ if (isset($_SESSION['logo'])) {
 
                                 <table id="hideen_display">
                                     <tr>
-                                        <td>Item</td>
+                                        <td>Produit</td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
-                                        <td>Quantity</td>
-                                        <td>Selling</td>
-                                        <td>Available Stock</td>
+                                        <td>Quantité</td>
+                                        <td>Prix De Vente</td>
+                                        <td>Disponible Au stock</td>
                                         <td>Total</td>
 
                                         <td> &nbsp;</td>
@@ -381,18 +365,18 @@ for ($i = 1; $i <= $max; $i++) {
                                     <tr>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
-                                        <td><input type="checkbox" id="round" onclick="discount_type()">Discount As Amount</td>
+                                        <td><input type="checkbox" id="round" onclick="discount_type()">Réduction Par Montant</td>
                                     </tr>
                                     <tr>
                                         <td> &nbsp;</td>
-                                        <td>Discount %<input type="text" maxlength="3" value="<?php echo $line->discount; ?>"
+                                        <td>Réduction %<input type="text" maxlength="3" value="<?php echo $line->discount; ?>"
                                                              class="round" onkeyup=" discount_amount();
                                                                      "
                                                              onkeypress="return numbersonly(event);" name="discount"
                                                              id="discount">
                                         </td>
 
-                                        <td>Discount Amount:<input type="text" readonly="readonly"
+                                        <td>Montant de réduction:<input type="text" readonly="readonly"
                                                                    value="<?php echo $line->dis_amount; ?>"
                                                                    onkeypress="return numbersonly(event);"
                                                                    onkeyup=" discount_as_amount();
@@ -418,9 +402,9 @@ for ($i = 1; $i <= $max; $i++) {
                                     </tr>
                                     <tr>
                                         <td> &nbsp;</td>
-                                        <td> Tax:<input type="text" name="tax" value="<?php echo $line->tax ?>"
+                                        <td>Taxe:<input type="text" name="tax" value="<?php echo $line->tax ?>"
                                                         onkeypress="return numbersonly(event);"></td>
-                                        <td>Tax Description:<input type="text" <?php echo $line->tax_dis ?> name="tax_dis"></td>
+                                        <td>Description de Taxe:<input type="text" <?php echo $line->tax_dis ?> name="tax_dis"></td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
@@ -429,7 +413,7 @@ for ($i = 1; $i <= $max; $i++) {
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
-                                        <td>Payable Amount:<input type="hidden" readonly="readonly" id="grand_total">
+                                        <td>Montant A Payer:<input type="hidden" readonly="readonly" id="grand_total">
                                             <input type="text" id="payable_amount" value="<?php echo $line->subtotal; ?>"
                                                    readonly="readonly" name="payable" class="round default-width-input"
                                                    style="text-align:right;width: 120px">
@@ -443,7 +427,7 @@ for ($i = 1; $i <= $max; $i++) {
                                             <select name="mode">
                                                 <option value="cheque">Cheque</option>
                                                 <option value="cheque">Cash</option>
-                                                <option value="cheque">Other</option>
+                                                <option value="cheque">Autre</option>
                                             </select>
                                         </td>
 
@@ -460,11 +444,11 @@ for ($i = 1; $i <= $max; $i++) {
                                     <tr>
                                         <td>
                                             <input class="button round blue image-right ic-add text-upper" type="submit"
-                                                   name="Submit" value="Add">
+                                                   name="Submit" value="Enregistrer">
                                         </td>
                                         <td> (Control + S)
                                             <input class="button round red   text-upper" type="reset" name="Reset"
-                                                   value="Reset"></td>
+                                                   value="Réinitialiser"></td>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
                                     </tr>
@@ -489,8 +473,7 @@ for ($i = 1; $i <= $max; $i++) {
 
             <!-- FOOTER -->
             <div id="footer">
-                <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-                </p>
+              
 
             </div>
             <!-- end footer -->

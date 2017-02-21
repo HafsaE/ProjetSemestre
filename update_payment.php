@@ -36,25 +36,19 @@ include_once("init.php");
 
     <div class="page-full-width cf">
 
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="active-tab payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+       <ul id="tabs" class="fl">
+            <li><a href="dashboard.php" class=" dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="active-tab payment-tab">Paiments </a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+        
 
     </div>
     <!-- end full-width -->
@@ -70,16 +64,16 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Payment</h3>
+            
             <ul>
-                <li><a href="view_payments.php">Payments</a></li>
+                <li><a href="view_payments.php">Paiements</a></li>
                 <li><a href="view_out_standing.php">Out standings</a></li>
             </ul>
             <div style="width: auto;height: 300px;background: #ffffff">
                 <br><br>
                 <table>
                     <tr>
-                        <td width="183">Total Number of Products</td>
+                        <td width="183">Nombre Total de produits</td>
                     </tr>
                     <tr>
                         <td width="84"><strong><?php echo $count = $db->countOfAll("stock_avail"); ?>&nbsp;</strong>
@@ -148,14 +142,7 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Update Payment</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                </div>
-                <!-- end content-module-heading -->
+                
 
                 <div class="content-module-main cf">
                     <form name="form1" method="post" id="form1" action="">

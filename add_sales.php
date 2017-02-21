@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Add Stock Category</title>
+    <title>GS - Ventes</title>
 
     <!-- Stylesheets -->
 
@@ -41,24 +41,18 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="active-tab  sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            <li><a href="dashboard.php" class=" dashboard-tab">Acceuil</a></li>
+            <li><a href="view_sales.php" class="active-tab sales-tab">Ventes</a></li>
+            <li><a href="view_customers.php" class=" customers-tab">Clients</a></li>
+            <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
+            <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
+            <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+       
 
     </div>
     <!-- end full-width -->
@@ -74,10 +68,9 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Sales Management</h3>
             <ul>
-                <li><a href="add_sales.php">Add Sales</a></li>
-                <li><a href="view_sales.php">View Sales</a></li>
+                <li><a href="add_sales.php">Ajouter Vente</a></li>
+                <li><a href="view_sales.php">Afficher Ventes</a></li>
             </ul>
         </div>
         <!-- end side-menu -->
@@ -87,13 +80,7 @@ include_once("init.php");
 
             <div class="content-module">
 
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Add Sales</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
-                </div>
+                
                 <!-- end content-module-heading -->
 
                 <div class="content-module-main cf">
@@ -103,9 +90,11 @@ include_once("init.php");
                     //Gump is libarary for Validatoin
                     if (isset($_GET['msg'])) {
                         echo $_GET['msg'];
+
                     }
 
-                    if (isset($_POST['total'])) {
+                    if (isset($_POST['stock_name'])) {
+                        echo "<script>alert('1')</script>";
                         $validated_data = $gump->run($_POST);
                         $stock_name = "";
                         $stockid = "";
@@ -166,11 +155,11 @@ include_once("init.php");
                             if($str == ''){
                             $autoid_new = "SL".$autoid;
                             }
-                            for ($i = 0; $i < count($stock_name); $i++) {
-                                $name1 = $stock_name[$i];
-                                $quantity = $_POST['quty'][$i];
-                                $rate = $_POST['sell'][$i];
-                                $total = $_POST['total'][$i];
+                            //for ($i = 0; $i < count($stock_name); $i++) {
+                                $name1 = $stock_name;
+                                $quantity = $_POST['quty'];
+                                $rate = $_POST['sell'];
+                                $total = $_POST['total'];
 
 
                                 $selected_date = $_POST['date'];
@@ -183,12 +172,12 @@ include_once("init.php");
                                 if ($count >= 1) {
 
                                     if($str == ''){
-                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
+                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,billnumber)
+                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description','$bill_no')");
                                     }
                                      if($str != ''){
-                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
+                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,billnumber)
+                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description','$bill_no')");
                                      }
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
@@ -202,12 +191,12 @@ include_once("init.php");
                                     $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$name1'");
 
                                 } else {
-                                    echo "<br><font color=green size=+1 >There is no enough stock deliver for $name1! Please add stock !</font>";
+                                    echo "<br><font color=green size=+1 >Pas de Disponibles au stock</font>";
                                 }
 
 
-                            }
-                            $msg = "<br><font color=green size=6px >Sales Added successfully Ref: [" . $_POST['stockid'] . "] !</font>";
+                            //}
+                            $msg = "<br><font color=green size=6px >Vente Enregistrée avec Succès Ref: [" . $_POST['stockid'] . "] !</font>";
                             echo $msg;
                             if($str == ''){
                             echo "<script>window.open('add_sales_print.php?sid=$autoid_new','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
@@ -226,7 +215,7 @@ include_once("init.php");
                     <form name="form1" method="post" id="form1" action="">
                         <input type="hidden" id="posnic_total">
 
-                        <p><strong>Add Sales/Product </strong> - Add New ( Control +2)</p>
+                        <p><strong>Ajouter Vente </strong> - Add New ( Control +2)</p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
@@ -238,13 +227,13 @@ include_once("init.php");
                                 }
                                   ?>
                                 <?php if($str == ''){?>
-                                <td>Bill no:</td>
+                                <td>Note No:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid_new ?>"/></td>
                                 <?php }?>
                                 <?php if($str != ''){?>
-                                <td>Bill no:</td>
+                                <td>Note No:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid ?>"/></td>
@@ -258,11 +247,11 @@ include_once("init.php");
                  
                             </tr>
                             <tr>
-                                <td>Customer:</td>
+                                <td>Client:</td>
                                 <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
                                            value="anonymous" maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
-                                <td>Address:</td>
+                                <td>Addresse:</td>
                                 <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
                                            value="coast street"maxlength="200" class="round default-width-input"/></td>
 
@@ -277,26 +266,26 @@ include_once("init.php");
                         <input type="hidden" id="edit_guid">
                         <table class="form">
                             <tr>
-                                <td>Item</td>
-                                <td>Quantity</td>
+                                <td>Produit</td>
+                                <td>Quantité</td>
 
-                                <td>Price</td>
-                                <td>Available Stock</td>
+                                <td>Prix</td>
+                                <td>Disponibilité au stock</td>
                                 <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
                                 <td> &nbsp;</td>
                             </tr>
                             <tr>
 
-                                <td><input name="" type="text" id="item" maxlength="200"
+                                <td><input name="stock_name" type="text" id="item" maxlength="200"
                                            class="round default-width-input " style="width: 150px"/></td>
 
-                                <td><input name="" type="text" id="quty" maxlength="200"
+                                <td><input name="quty" type="text" id="quty" maxlength="200"
                                            class="round default-width-input my_with"
                                            onKeyPress="quantity_chnage(event);return numbersonly(event)"
                                            onkeyup="total_amount();unique_check();stock_size();"/></td>
 
 
-                                <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200"
+                                <td><input name="sell" type="text" id="sell" readonly="readonly" maxlength="200"
                                            class="round default-width-input my_with"/></td>
 
 
@@ -304,7 +293,7 @@ include_once("init.php");
                                            class="round  my_with"/></td>
 
 
-                                <td><input name="" type="text" id="total" maxlength="200"
+                                <td><input name="total" type="text" id="total" maxlength="200"
                                            class="round default-width-input " style="width:120px;  margin-left: 20px"/>
                                 </td>
                                 
@@ -322,17 +311,17 @@ include_once("init.php");
                             <tr>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
-                                <td><input type="checkbox" id="round" onclick="discount_type()">Discount As Amount</td>
+                                <td><input type="checkbox" id="round" onclick="discount_type()">Réduction Par Montant</td>
                             </tr>
                             <tr>
                                 <td> &nbsp;</td>
-                                <td>Discount %<input type="text" maxlength="3" class="round"
+                                <td>Réduction %<input type="text" maxlength="3" class="round"
                                                      onkeyup=" discount_amount(); "
                                                      onkeypress="return numbersonly(event);" name="discount"
                                                      id="discount">
                                 </td>
 
-                                <td>Discount Amount:<input type="text" readonly="readonly"
+                                <td>Montant de Réduction:<input type="text" readonly="readonly"
                                                            onkeypress="return numbersonly(event);"
                                                            onkeyup=" discount_as_amount(); " class="round"
                                                            id="disacount_amount" name="dis_amount">
@@ -354,8 +343,8 @@ include_once("init.php");
                             </tr>
                             <tr>
                                 <td> &nbsp;</td>
-                                <td> Tax:<input type="text" id="tax" name="tax" onkeypress="return numbersonly(event);" onkeyup="add_tax();"></td>
-                                <td>Tax Description:<input type="text" name="tax_dis"></td>
+                                <td> Taxe:<input type="text" id="tax" name="tax" onkeypress="return numbersonly(event);" onkeyup="add_tax();"></td>
+                                <td> Description de Taxe:<input type="text" name="tax_dis"></td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
@@ -364,7 +353,7 @@ include_once("init.php");
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
-                                <td>Payable Amount:<input type="hidden" readonly="readonly" id="grand_total">
+                                <td>Montant A Payer:<input type="hidden" readonly="readonly" id="grand_total">
                                     <input type="text" id="payable_amount" readonly="readonly" name="payable"
                                            class="round default-width-input" style="text-align:right;width: 120px">
                                 </td>
@@ -378,7 +367,7 @@ include_once("init.php");
                                     <select name="mode">
                                         <option value="cash">Cash</option>
                                         <option value="cheque">Cheque</option>
-                                        <option value="other">Other</option>
+                                        <option value="other">Autre</option>
                                     </select>
                                 </td>                         
                                 <td> &nbsp;</td>
@@ -393,13 +382,13 @@ include_once("init.php");
                             <tr>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
+                                           name="Submit" value="Enregistrer">
                                 </td>
                                 <td> (Control + S)
                                     </td>
                                 <td> &nbsp;</td>
                                 <td> <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
-                                           value="Reset"></td>
+                                           value="Réinitialiser"></td>
                             </tr>
                         </table>
                     </form>
@@ -416,8 +405,7 @@ include_once("init.php");
 
 <!-- FOOTER -->
 <div id="footer">
-    <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-    </p>
+    
 
 </div>
 <!-- end footer -->
