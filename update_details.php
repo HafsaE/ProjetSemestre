@@ -212,13 +212,13 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
         </table>
 
     </form>
-    <div style="float: right;margin-top: -350px">
+    <!--<div style="float: right;margin-top: -350px">
         <form action="" method="POST" id="login-form" class="cmxform" enctype="multipart/form-data">
             <p>Modifier Logo</p>
             <input type="file" name="file" id="file" class="round full-width-input"><br><br><br>
             <input type="submit" name="submit" value="Enregistrer" class="button round blue image-right ic-right-arrow">
         </form>
-    </div>
+    </div>-->
 </div>
 <!-- end content -->
 

@@ -1,3 +1,4 @@
+
 <?php
 include_once("init.php"); // Use session variable on this page. This function must put on the top of page.
 if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if session variable "username" does not exist.
@@ -159,6 +160,6 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
         </html>
         <?php
     } else
-        echo "Please from and to date to process report";
+        echo "Entrer une date avant et après SVP";
 }
 ?>

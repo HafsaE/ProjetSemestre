@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Dashboard</title>
+    <title>GS</title>
 
     <!-- Stylesheets -->
 
@@ -39,18 +39,12 @@ include_once("init.php");
             <li><a href="view_purchase.php" class="purchase-tab">Achats</a></li>
             <li><a href="view_supplier.php" class=" supplier-tab">Fournisseurs</a></li>
             <li><a href="view_product.php" class=" stock-tab">Stocks / Produits</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Paiments / Outstandings</a></li>
+            <li><a href="view_payments.php" class="payment-tab">Paiments</a></li>
             <li><a href="view_report.php" class="report-tab">Rapports</a></li>
         </ul>
         <!-- end tabs -->
 
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
+     
 
     </div>
     <!-- end full-width -->
@@ -68,11 +62,11 @@ include_once("init.php");
 
             
             <ul>
-                <li><a href="add_sales.php">Add Sales</a></li>
-                <li><a href="add_purchase.php">Add Purchase</a></li>
-                <li><a href="add_supplier.php">Add Supplier</a></li>
-                <li><a href="add_customer.php">Add Customer</a></li>
-                <li><a href="view_report.php">Report</a></li>
+                <li><a href="add_sales.php">Ajouter Vente</a></li>
+                <li><a href="add_purchase.php">Ajouter Achat</a></li>
+                <li><a href="add_supplier.php">Ajouter Fournisseur</a></li>
+                <li><a href="add_customer.php">Ajouter Client</a></li>
+                <li><a href="view_report.php">Rapports</a></li>
             </ul>
 
         </div>
@@ -98,9 +92,9 @@ include_once("init.php");
                             if (trim($_POST['new_pass']) == trim($_POST['confirm_pass'])) {
                                 $con = $_POST['confirm_pass'];
                                 $db->query("update stock_user  SET password='$con' where username='$username'");
-                                echo "<br><font color=green size=6px >Password is Successfuly updated!</font>";
+                                echo "<br><font color=green size=6px >Le mot de passe a été modifié avec succès ! </font>";
                             } else {
-                                echo "<br><font color=red size=6px >Confirm password is Wrong!</font>";
+                                echo "<br><font color=red size=6px >La confirmation du mot de passe est erronée </font>";
                             }
                         }
                     }
@@ -110,24 +104,24 @@ include_once("init.php");
                                cellpadding="0">
 
                             <tr>
-                                <td>Old Password</td>
-                                <td><input type="password" name="old_pass" readonly="readonly"></td>
+                                <td>Ancien Mot De Passe</td>
+                                <td><input type="password" name="old_pass"></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>New Password</td>
-                                <td><input type="password" name="new_pass" readonly="readonly"></td>
+                                <td>Nouveau Mot De Passe</td>
+                                <td><input type="password" name="new_pass"></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Confirm Password</td>
-                                <td><input type="password" name="confirm_pass" readonly="readonly"></td>
+                                <td>Confirmer Mot De Passe</td>
+                                <td><input type="password" name="confirm_pass"></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
@@ -142,11 +136,11 @@ include_once("init.php");
                             <tr>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" name="change_pass" value="Save">
+                                           name="Submit" name="change_pass" value="Enregistrer">
                                 </td>
                                 <td>
                                     <input class="button round red   text-upper" type="reset" name="Reset"
-                                           value="Reset"></td>
+                                           value="Réinitialiser"></td>
                             </tr>
 
                         </table>
@@ -180,33 +174,8 @@ include_once("init.php");
 
 <!-- FOOTER -->
 <div id="footer">
-    <div id="fb-root"></div>
-    <div id="fb-root"></div>
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=286371564842269";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <div class="fb-like" data-href="https://www.facebook.com/posnic.point.of.sale" data-width="450"
-         data-show-faces="true" data-send="true"></div>
-    <script type="text/javascript">
-        (function () {
-            var po = document.createElement('script');
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-    </script>
-    <div class="g-plusone" data-href="https://plus.google.com/u/0/107268519615804538483"></div>
-
-    <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-    </p>
+   
+   
 
 </div>
 <!-- end footer -->

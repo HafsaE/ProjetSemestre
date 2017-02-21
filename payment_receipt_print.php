@@ -142,6 +142,6 @@ if(isset($_GET['sid']))
 </html>
 <?php
 }
-else "Error in processing printing the Payment receipt";
+else "Erreur dans le processus de paiement";
 }
 ?>
