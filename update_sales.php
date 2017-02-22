@@ -359,8 +359,21 @@ for ($i = 1; $i <= $max; $i++) {
                                     </table>
                                 </div>
 
+                                 <table class="form">
+                                    <tr>
+                                        <td>
+                                            <input class="button round blue image-right ic-add text-upper" type="submit"
+                                                   name="Submit" value="Enregistrer">
+                                        </td>
+                                        <td> 
+                                            <input class="button round red   text-upper" type="reset" name="Reset"
+                                                   value="Réinitialiser"></td>
+                                        <td> &nbsp;</td>
+                                        <td> &nbsp;</td>
+                                    </tr>
+                                </table>
 
-                                <table class="form">
+                                <table class="form" style="margin-top:500px;">
 
                                     <tr>
                                         <td> &nbsp;</td>
@@ -446,7 +459,7 @@ for ($i = 1; $i <= $max; $i++) {
                                             <input class="button round blue image-right ic-add text-upper" type="submit"
                                                    name="Submit" value="Enregistrer">
                                         </td>
-                                        <td> (Control + S)
+                                        <td> 
                                             <input class="button round red   text-upper" type="reset" name="Reset"
                                                    value="Réinitialiser"></td>
                                         <td> &nbsp;</td>

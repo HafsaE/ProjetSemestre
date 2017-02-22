@@ -349,7 +349,7 @@ include_once("init.php");
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
                                            name="Submit" value="Enregistrer">
                                 </td>
-                                <td> (Control + S)
+                                <td> 
                                     <input class="button round red   text-upper" type="reset" name="Reset"
                                            value="Réinitialiser"></td>
                                 <td> &nbsp;</td>

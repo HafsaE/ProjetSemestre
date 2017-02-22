@@ -80,7 +80,7 @@ include_once("init.php");
 
                 <div class="content-module-main cf">
                     <form name="form1" method="post" id="form1" action="">
-                        <p><strong>Ajouter Stock</strong> - Ajouter ( Control + 3)</p>
+                        
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <?php
                             if (isset($_POST['id'])) {
@@ -134,7 +134,7 @@ include_once("init.php");
                                     <td>
                                         <input class="button round blue image-right ic-add text-upper" type="submit"
                                                name="Submit" value="Enregistrer">
-                                        (Control + S)
+                                        
                                     </td>
                                     <td align="right"><input class="button round red   text-upper" type="reset"
                                                              name="Reset" value="Réinitialiser"></td>

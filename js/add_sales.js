@@ -139,6 +139,7 @@ function remove_row(o) {
     p.parentNode.removeChild(p);
 }
 function add_values() {
+
     if (unique_check()) {
 
         if (document.getElementById('edit_guid').value == "") {
@@ -199,6 +200,7 @@ function add_values() {
     discount_amount();
 }
 function total_amount() {
+
     balance_amount();
     
     if (document.getElementById('stock').value >= parseInt(document.getElementById('quty').value)) {
@@ -284,6 +286,7 @@ function balance_amount() {
 
 }
 function stock_size() {
+
     if (parseFloat(document.getElementById('quty').value) > parseFloat(document.getElementById('stock').value)) {
         document.getElementById('quty').value = parseFloat(document.getElementById('stock').value);
 
@@ -292,14 +295,12 @@ function stock_size() {
 }
 function discount_amount() {
 
-    if (document.getElementById('grand_total').value != "") {
-        document.getElementById('disacount_amount').value = parseFloat(document.getElementById('grand_total').value) *
-                (parseFloat(document.getElementById('discount').value)) / 100;
+    if (document.getElementById('total').value != "") {
+        document.getElementById('main_grand_total').value = parseFloat(document.getElementById('total').value) *
+                (parseFloat(document.getElementById('discount_amount').value)) / 100;
 
     }
-    if (document.getElementById('discount').value == "") {
-        document.getElementById('disacount_amount').value = "";
-    }
+    
     discont = parseFloat(document.getElementById('disacount_amount').value);
     if (document.getElementById('disacount_amount').value == "") {
         discont = 0;
@@ -395,13 +396,11 @@ function reduce_balance(id) {
 }
 function discount_type() {
     if (document.getElementById('round').checked) {
-        document.getElementById("discount").readOnly = true;
-        document.getElementById("disacount_amount").readOnly = false;
-        if (parseFloat(document.getElementById('grand_total')) != "") {
-            document.getElementById('disacount_amount').value = "";
-            document.getElementById('discount').value = "";
-            discount_amount();
-        }
+             document.getElementById("discount").readOnly = true;
+             document.getElementById("disacount_amount").readOnly = false;
+        if (parseFloat(document.getElementById('total')) != "") {
+                discount_as_amount();
+                }
     } else {
         document.getElementById("discount").readOnly = false;
         document.getElementById("disacount_amount").readOnly = true;

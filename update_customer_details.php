@@ -79,7 +79,7 @@ include_once("init.php");
 
                 <div class="content-module-main cf">
                     <form name="form1" method="post" id="form1" action="">
-                        <p><strong>Ajouter Détails du Client </strong> - Ajouter ( Control +A)</p>
+                       
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <?php
                             if (isset($_POST['id'])) {
@@ -94,7 +94,7 @@ include_once("init.php");
                                 if ($db->query("UPDATE customer_details  SET customer_name='$name',customer_address='$address',customer_contact1='$contact1',customer_contact2='$contact2' where id='$id'"))
                                     echo "<br><font color=green size=+1 > Modification Réussie </font>";
                                 else
-                                    echo "<br><font color=red size=+1 >Problem in Updation !</font>";
+                                    echo "<br><font color=red size=+1 >Erreur !</font>";
 
 
                             }
@@ -142,7 +142,7 @@ include_once("init.php");
                                     <td>
                                         <input class="button round blue image-right ic-add text-upper" type="submit"
                                                name="Submit" value="Enregistrer">
-                                        (Control + S)
+                                       
                                     </td>
                                     <td align="right"><input class="button round red   text-upper" type="reset"
                                                              name="Reset" value="Réinitialiser"></td>

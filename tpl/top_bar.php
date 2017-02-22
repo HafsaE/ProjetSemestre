@@ -1,5 +1,5 @@
 <!-- TOP BAR -->
-	<div id="top-bar">
+	<div id="top-bar" >
 		
 		<div class="page-full-width cf">
 

@@ -349,7 +349,7 @@ include_once("init.php");
                                     <th>No</th>
                                     <th>Nom</th>
                                     <th>Contact</th>
-                                    <th>Balance</th>
+                                    
                                     <th>Modifier / Supprimer</th>
                                     <th>Selectionner</th>
                                 </tr>
@@ -377,7 +377,7 @@ include_once("init.php");
 
                                         <td><?php echo $row['customer_name']; ?></td>
                                         <td> <?php echo $row['customer_contact1']; ?></td>
-                                        <td> <?php echo $row['balance']; ?></td>
+                                      
                                         <td>
                                             <a href="update_customer_details.php?sid=<?php echo $row['id']; ?>&table=customer_details&return=view_customers.php"
                                                class="table-actions-button ic-table-edit">

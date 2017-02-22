@@ -134,7 +134,7 @@ include_once("init.php");
 
                     <form name="form1" method="post" id="form1" action="">
 
-                        <p><strong>Ajouter Informations du Client </strong> - Ajouter ( Control +A)</p>
+                       
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td><span class="man">*</span>Nom:</td>
@@ -173,7 +173,7 @@ include_once("init.php");
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
                                            name="Submit" value="Ajouter">
-                                    (Control + S)
+                                 
                                 <td>
                                     &nbsp;
                                 </td>

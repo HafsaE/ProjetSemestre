@@ -91,7 +91,7 @@ include_once("init.php");
                                 echo $_GET['msg'];
                             }
                             if (isset($_POST['supplier']) and isset($_POST['stock_name'])) {
-                                echo "<script>alert('fonction')</script>";
+                                
                                 $_POST = $gump->sanitize($_POST);
                                 $gump->validation_rules(array(
                                     'supplier' => 'required|max_len,100|min_len,3'
@@ -126,7 +126,7 @@ include_once("init.php");
                                     
                                     if ($count == 0) {
                                         $db->query("insert into supplier_details(supplier_name,supplier_address,supplier_contact1) values('$supplier','$address','$contact')");
-                                        echo "<script>alert('111111111')</script>";
+                                        
 
                                     }
                                     $quty = $_POST['quty'];
@@ -148,7 +148,7 @@ include_once("init.php");
                                     $date = date('Y-m-d H:i:s', $selected_date);
                                     //for ($i = 0; $i < count($stock_name); $i++) {
                                         $count = $db->countOf("stock_avail", "name='$stock_name'");
-                                            echo "<script>alert('$stock_name')</script>";
+                                            
                                         if ($count == 0) {
                                             $db->query("insert into stock_avail(name,quantity) values('$stock_name',$quty)");
                                             echo "<br><font color=green size=+1 >New Stock Entry Inserted !</font>";
@@ -157,7 +157,7 @@ include_once("init.php");
 
 
                                             $db->query("INSERT INTO stock_entries(stock_id,stock_name, stock_supplier_name, quantity, company_price, selling_price, opening_stock, closing_stock, date, username, type, total, payment, balance, mode, description, due, subtotal) VALUES ( '$autoid1','$stock_name','$supplier','$quty','$cost','$sell',0,'$quty','$date','$username','entry','$total','$payment','$balance','$mode','$description','$due','$subtotal')");
-                                            echo "<script>alert('22222222')</script>";
+                                            
                                         } else if ($count == 1) {
 
                                             $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$stock_name'");
@@ -166,7 +166,7 @@ include_once("init.php");
                                             $db->query("INSERT INTO stock_entries(stock_id,stock_name,stock_supplier_name,quantity,company_price,selling_price,opening_stock,closing_stock,date,username,type,total,mode,description,subtotal) VALUES ('$autoid1','$stock_name','$supplier','$quty','$cost','$sell','$amount','$amount1','$date','$username','entry','$total','$mode','$description','$subtotal')");
                                             //INSERT INTO `stock`.`stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`)
                                             //VALUES (NULL, '$autoid1', '$stock_name[$i]', '$supplier', '', '$quantity', '$brate', '$srate', '$amount', '$amount1', '$mysqldate', 'sdd', 'entry', 'Sa45', '432.90', '2342.90', '24.34', 'cash', 'sdflj', '2010-03-25 12:32:02', '45645', '1');
-                                            echo "<script>alert('3333333333')</script>";
+                                            
                                         }
                                     //}
                                     $msg = "<br><font color=green size=6px >Achat ajoute avec succes Ref: [" . $_POST['purchaseid'] . "] !</font>";
@@ -178,7 +178,6 @@ include_once("init.php");
                             <form name="form1" method="post" id="form1" action="">
                                 <input type="hidden" id="posnic_total">
 
-                                <p><strong>Ajouter Achat </strong> </p>
                                 <table class="form" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                             <?php
@@ -203,7 +202,7 @@ include_once("init.php");
                                                    value="<?php echo $autoid ?>"/></td>
                                         <?php }?>
                                         <td>Date:</td>
-                                        <td><input name="date" id="test1" placeholder=""  style="margin-left: 15px;" value="<?php date_default_timezone_set("Asia/Kolkata");
+                                        <td><input name="date" id="test1" placeholder=""  style="margin-left: 15px;" value="<?php date_default_timezone_set("Africa/Casablanca");
                                         echo date('Y-m-d H:i:s'); ?>"
                                                    type="text" id="name" maxlength="200" class="round default-width-input"/>
                                         </td>

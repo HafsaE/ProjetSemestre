@@ -93,7 +93,7 @@ $(document).ready( function() {
 });
 		
 		function confirmSubmit() {
-            var agree = confirm("Are you sure you wish to Delete this Entry?");
+            var agree = confirm("Etes vous sur de vouloir supprimer cette entrée?");
             if (agree)
                 return true;
             else
@@ -115,11 +115,11 @@ function confirmDeleteSubmit() {
 
             }*/
             if (flag ==0) {
-                alert("You must check one and only one checkbox!");
+                alert("Veuillez marquer un seul choix!");
                 return false;
             } else {
 				
-                var agree = confirm("Are you sure you wish to Delete Selected Record.?");
+                var agree = confirm("Etes vous sur de vouloir supprimer cette entrée?");
                 if (agree)
 
                 

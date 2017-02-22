@@ -124,22 +124,22 @@ include_once("init.php");
                             $description = mysqli_real_escape_string($db->connection, $_POST['description']);
                             //$due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
                             //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
-                            $discount = mysqli_real_escape_string($db->connection, $_POST['discount']);
+                            $discount = "";
                             if ($discount == "") {
                                 $discount = 00;
                             }
-                            $dis_amount = mysqli_real_escape_string($db->connection, $_POST['dis_amount']);
+                            $dis_amount = "";
                             if ($dis_amount == "") {
                                 $dis_amount = 00;
                             }
-                            $subtotal = mysqli_real_escape_string($db->connection, $_POST['payable']);
+                            $subtotal = "";
                             //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
-                            $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
-                            $tax = mysqli_real_escape_string($db->connection, $_POST['tax']);
+                            $mode = "";
+                            $tax = "";
                             if ($tax == "") {
                                 $tax = 00;
                             }
-                            $tax_dis = mysqli_real_escape_string($db->connection, $_POST['tax_dis']);
+                            $tax_dis = "";
                             $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
                             //$temp_balance = (int)$temp_balance + (int)$balance;
                             $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
@@ -153,7 +153,7 @@ include_once("init.php");
                             $array = explode(' ', $str);                           
                             $autoid = ++$array[0];
                             if($str == ''){
-                            $autoid_new = "SL".$autoid;
+                            $autoid_new = "VT".$autoid;
                             }
                             //for ($i = 0; $i < count($stock_name); $i++) {
                                 $name1 = $stock_name;
@@ -173,11 +173,11 @@ include_once("init.php");
 
                                     if($str == ''){
                                     $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description','$bill_no')");
+                            values('$tax','$tax_dis','$discount','$dis_amount','$total','$autoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$total','$total','$mode','$description','$bill_no')");
                                     }
                                      if($str != ''){
                                     $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description','$bill_no')");
+                            values('$tax','$tax_dis','$discount','$dis_amount','$total','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$total','$total','$mode','$description','$bill_no')");
                                      }
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
@@ -215,7 +215,7 @@ include_once("init.php");
                     <form name="form1" method="post" id="form1" action="">
                         <input type="hidden" id="posnic_total">
 
-                        <p><strong>Ajouter Vente </strong> - Add New ( Control +2)</p>
+                        
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
@@ -223,23 +223,23 @@ include_once("init.php");
                                 $array = explode(' ', $str);                           
                                 $autoid = ++$array[0];
                                 if($str == ''){
-                                $autoid_new = "SL".$autoid;
+                                $autoid_new = "VT".$autoid;
                                 }
                                   ?>
                                 <?php if($str == ''){?>
-                                <td>Note No:</td>
+                                <td>Vente No:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid_new ?>"/></td>
                                 <?php }?>
                                 <?php if($str != ''){?>
-                                <td>Note No:</td>
+                                <td>Vente No:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid ?>"/></td>
                                 <?php }?>
                                 <td>Date:</td>
-                                <td><input name="date" id="test1" placeholder="" value="<?php date_default_timezone_set("Asia/Kolkata");echo date('Y-m-d H:i:s');?>"
+                                <td><input name="date" id="test1" placeholder="" value="<?php date_default_timezone_set("Africa/Casablanca");echo date('Y-m-d H:i:s');?>"
                                 style="margin-left: 15px;"type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
                                
@@ -248,16 +248,16 @@ include_once("init.php");
                             </tr>
                             <tr>
                                 <td>Client:</td>
-                                <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
-                                           value="anonymous" maxlength="200" class="round default-width-input" style="width:130px "/></td>
+                                <td><input name="supplier" placeholder="Nom Client" type="text" id="supplier"
+                                           value="" maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
                                 <td>Addresse:</td>
-                                <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
-                                           value="coast street"maxlength="200" class="round default-width-input"/></td>
+                                <td><input name="address" placeholder="Adresse " type="text" id="address"
+                                           value="" maxlength="200" class="round default-width-input"/></td>
 
                                 <td>contact:</td>
-                                <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
-                                           value="9876543210"maxlength="200" class="round default-width-input"
+                                <td><input name="contact" placeholder="Contact" type="text" id="contact1"
+                                           value="" maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)" style="width:120px "/></td>
 
                             </tr>
@@ -305,13 +305,25 @@ include_once("init.php");
 
                             </table>
                         </div>
-
-
                         <table class="form">
+                            <tr>
+                                <td>
+                                    <input class="button round blue text-upper" type="submit"
+                                           name="Submit" value="Enregistrer">
+                                </td>
+
+                                <td> &nbsp;</td>
+                                <td> <input class="button round red  text-upper" type="reset" id="Reset" name="Reset"
+                                           value="Réinitialiser"></td>
+                            </tr>
+                        </table>
+
+
+                        <table class="form" style="margin-top: 500px;">
                             <tr>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
-                                <td><input type="checkbox" id="round" onclick="discount_type()">Réduction Par Montant</td>
+                                <td><input type="checkbox" id="round" onclick="discount_type();">Réduction Par Montant</td>
                             </tr>
                             <tr>
                                 <td> &nbsp;</td>
@@ -321,7 +333,7 @@ include_once("init.php");
                                                      id="discount">
                                 </td>
 
-                                <td>Montant de Réduction:<input type="text" readonly="readonly"
+                                <td>Montant de Réduction:<input type="text" 
                                                            onkeypress="return numbersonly(event);"
                                                            onkeyup=" discount_as_amount(); " class="round"
                                                            id="disacount_amount" name="dis_amount">
@@ -335,8 +347,8 @@ include_once("init.php");
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td>Grand Total:<input type="hidden" readonly="readonly" id="grand_total"
-                                                       name="subtotal">
-                                    <input type="text" id="main_grand_total" readonly="readonly"
+                                                       >
+                                    <input type="text" id="main_grand_total" readonly="readonly" name="subtotal"
                                            class="round default-width-input" style="text-align:right;width: 120px">
                                 </td>
                                 
@@ -378,19 +390,7 @@ include_once("init.php");
                                 <td> &nbsp;</td>
                             </tr>
                         </table>
-                        <table class="form">
-                            <tr>
-                                <td>
-                                    <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Enregistrer">
-                                </td>
-                                <td> (Control + S)
-                                    </td>
-                                <td> &nbsp;</td>
-                                <td> <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
-                                           value="Réinitialiser"></td>
-                            </tr>
-                        </table>
+                        
                     </form>
                 </div>
                 <!-- end content-module-main -->

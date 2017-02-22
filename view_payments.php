@@ -343,7 +343,8 @@ include_once("init.php");
 
                                     $entryid = $row['transactionid'];
                                     $line = $db->queryUniqueObject("SELECT * FROM stock_sales WHERE transactionid='$entryid' ");
-                                    $mysqldate = $line->due;
+
+                                    $mysqldate = $line->date;
 
                                     $phpdate = strtotime($mysqldate);
 

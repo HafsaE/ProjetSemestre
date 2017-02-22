@@ -21,7 +21,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
             "http://www.w3.org/TR/html4/loose.dtd">
         <html>
         <head>
-            <title>Purchase Report</title>
+            <title>Rapport De Stocks</title>
             <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         </head>
         <style type="text/css" media="print">
@@ -41,7 +41,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td align="center">
-                    <div align="right">
+                    <div align="left">
                         <?php $line4 = $db->queryUniqueObject("SELECT * FROM store_details ");
                         ?>
                         <strong><?php echo $line4->name; ?></strong><br/>
@@ -55,7 +55,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                     <table width="595" border="0" cellspacing="0" cellpadding="0">
 
                         <tr>
-                            <td height="30" align="center"><strong>Stock Purchase Report </strong></td>
+                            <td height="30" align="center"><strong>Rapport De Stocks</strong></td>
                         </tr>
                         <tr>
                             <td height="30" align="center">&nbsp;</td>
@@ -67,20 +67,16 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                         <td align="left">
                                             <table width="300" border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td width="150"><strong>Total Purchase</strong></td>
+                                                    <td width="150"><strong>Total Achats</strong></td>
                                                     <td width="150">
-                                                        &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(subtotal) FROM stock_entries where count1=1 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
+                                                        &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(total) FROM stock_entries where count1=0 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><strong>Paid Amount</strong></td>
+                                                    <td><strong>Total Ventes</strong></td>
                                                     <td>
-                                                        &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(payment) FROM stock_entries where count1=1 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
+                                                        &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(amount) FROM stock_sales where count1=0  AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td width="150"><strong>Pending Payment </strong></td>
-                                                    <td width="150">
-                                                        &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(balance) FROM stock_entries where count1=1 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
-                                                </tr>
+                                               
                                             </table>
                                         </td>
                                         <td align="right">&nbsp;</td>
@@ -115,17 +111,16 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td width="10%"><strong>Date</strong></td>
-                                        <td width="14%"><strong>Supplier<br>
+                                        <td width="14%"><strong>Fournisseur<br>
                                             </strong></td>
                                         <td width="14%"><strong>Stock</strong></td>
-                                        <td width="11%"><strong>Quantity</strong></td>
-                                        <td width="8%"><strong>Rate</strong></td>
-                                        <td width="11%"><strong>Opening<br>
-                                                Stock</strong></td>
-                                        <td width="11%"><strong>Closing<br>
-                                                Stock</strong></td>
+                                        <td width="11%"><strong>Quantité</strong></td>
+                                        <td width="8%"><strong>Prix de Vente</strong></td>
+                                        <td width="11%"><strong>Stock De<br>
+                                                Départ</strong></td>
+                                        <td width="11%"><strong>Stock <br>
+                                                Final</strong></td>
                                         <td width="11%"><strong>Total</strong></td>
-                                    </tr>
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>

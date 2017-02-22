@@ -42,7 +42,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td align="center">
-                    <div align="right">
+                    <div align="left">
                         <?php $line4 = $db->queryUniqueObject("SELECT * FROM store_details ");
                         ?>
                         <strong><?php echo $line4->name; ?></strong><br/>
@@ -67,18 +67,14 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                     <tr>
                                         <td width="150"><strong>Total</strong></td>
                                         <td width="150">
-                                            &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(subtotal) FROM stock_entries where count1=1 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
+                                            &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(subtotal) FROM stock_entries where count1=0 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Montant Payé</strong></td>
                                         <td>
-                                            &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(payment) FROM stock_entries where count1=1 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
+                                            &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(payment) FROM stock_entries where count1=0 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
                                     </tr>
-                                    <tr>
-                                        <td width="150"><strong>Pending Payment </strong></td>
-                                        <td width="150">
-                                            &nbsp;<?php echo $age = $db->queryUniqueValue("SELECT sum(balance) FROM stock_entries where count1=1 AND type='entry' AND date BETWEEN '$fromdate' AND '$todate' "); ?></td>
-                                    </tr>
+                                    
                                 </table>
                             </td>
                         </tr>
@@ -109,10 +105,10 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td><strong>Date</strong></td>
-                                        <td><strong>Id Vente </strong></td>
+                                        <td><strong>Id Stock</strong></td>
                                         <td><strong>Fournisseur</strong></td>
                                         <td><strong>Payé</strong></td>
-                                        <td><strong>Balance</strong></td>
+                                       
                                         <td><strong>Total</strong></td>
                                     </tr>
                                     <tr>
@@ -136,7 +132,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                             <td><?php echo $line->stock_id; ?></td>
                                             <td><?php echo $line->stock_supplier_name; ?></td>
                                             <td><?php echo $line->payment;?></td>
-                                            <td><?php echo $line->balance; ?></td>
+                                           
                                             <td><?php echo $line->subtotal; ?></td>
                                         </tr>
                                         <?php
